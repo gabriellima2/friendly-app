@@ -27,13 +27,14 @@ export function Story(props: StoryProps) {
 			<Box
 				p={4}
 				py={5}
-				borderWidth={1}
-				borderColor="dark-gray"
+				borderTopWidth={1}
+				borderTopColor="dark-gray"
 				borderBottomRightRadius="rounded"
 				borderBottomLeftRadius="rounded"
 				borderTopLeftRadius="rounded-sm"
 				borderTopRightRadius="rounded-sm"
 				backgroundColor="dark-gray-transparent"
+				alignItems="center"
 				position="absolute"
 				bottom={0}
 				left={0}
