@@ -1,4 +1,4 @@
-import { BackButton, Box, Typography } from '@/ui/atoms'
+import { BackButton, Box, DefaultContainer, Typography } from '@/ui/atoms'
 import {
 	useHeaderState,
 	type UseHeaderStateParams,
@@ -13,10 +13,8 @@ export function Header(props: HeaderProps) {
 	const { title, withBackButton, headerRight } = props
 	const { canGoBack } = useHeaderState({ withBackButton })
 	return (
-		<Box
-			px={5}
+		<DefaultContainer
 			pt={12}
-			pb={8}
 			flexDirection="row"
 			alignItems="center"
 			justifyContent="space-between"
@@ -26,6 +24,6 @@ export function Header(props: HeaderProps) {
 				<Typography.Title numberOfLines={1}>{title}</Typography.Title>
 			</Box>
 			{headerRight && headerRight()}
-		</Box>
+		</DefaultContainer>
 	)
 }
