@@ -1,4 +1,5 @@
 export * from './box'
+export * from './indicator'
 export * from './typography'
 export * from './back-button'
 export * from './base-button'
