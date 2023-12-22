@@ -1,5 +1,6 @@
 import { createTheme } from '@shopify/restyle'
 
+import { buttonVariants } from './button-variants'
 import { textVariants } from './text-variants'
 import { borderRadii } from './border-radii'
 import { spacing } from './spacing'
@@ -10,6 +11,7 @@ export const theme = createTheme({
 	textVariants,
 	spacing,
 	borderRadii,
+	buttonVariants,
 })
 
 export type Theme = typeof theme
