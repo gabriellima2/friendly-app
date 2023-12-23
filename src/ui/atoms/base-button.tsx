@@ -4,14 +4,13 @@ import {
 	createRestyleComponent,
 	createVariant,
 	spacing,
-	type SpacingProps,
+	type BoxProps,
 	type VariantProps,
 } from '@shopify/restyle'
 
 import { Theme } from '@/styles/theme'
 
-type BoxCustomProps = SpacingProps<Theme> &
-	VariantProps<Theme, 'buttonVariants'>
+type BoxCustomProps = BoxProps<Theme> & VariantProps<Theme, 'buttonVariants'>
 
 const Box = createRestyleComponent<BoxCustomProps, Theme>([
 	spacing,
