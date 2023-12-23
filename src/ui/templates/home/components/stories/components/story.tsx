@@ -1,4 +1,5 @@
 import { Image } from 'react-native'
+import { BlurView } from 'expo-blur'
 
 import { Avatar, Box, Typography } from '@/ui/atoms'
 import { theme } from '@/styles/theme'
@@ -25,15 +26,6 @@ export function Story(props: StoryProps) {
 				resizeMode="cover"
 			/>
 			<Box
-				p={4}
-				py={5}
-				borderTopWidth={1}
-				borderTopColor="dark-gray"
-				borderBottomRightRadius="rounded"
-				borderBottomLeftRadius="rounded"
-				borderTopLeftRadius="rounded-sm"
-				borderTopRightRadius="rounded-sm"
-				backgroundColor="dark-gray-transparent"
 				alignItems="center"
 				position="absolute"
 				bottom={0}
@@ -43,14 +35,33 @@ export function Story(props: StoryProps) {
 				<Avatar
 					url={author.avatarUrl}
 					position="absolute"
-					left={45}
+					left={50}
 					bottom={45}
-					borderWidth={4}
-					borderColor="util"
+					width={36}
+					height={36}
+					backgroundColor="util"
+					zIndex={100}
 				/>
-				<Typography.Subtitle fontSize={16} numberOfLines={1}>
-					{author.name}
-				</Typography.Subtitle>
+				<BlurView
+					tint="dark"
+					intensity={90}
+					style={{
+						width: '100%',
+						height: '100%',
+						alignItems: 'center',
+						paddingVertical: theme.spacing[5],
+						paddingHorizontal: theme.spacing[4],
+						overflow: 'hidden',
+						borderBottomRightRadius: theme.borderRadii.rounded,
+						borderBottomLeftRadius: theme.borderRadii.rounded,
+						borderTopRightRadius: theme.borderRadii['rounded-sm'],
+						borderTopLeftRadius: theme.borderRadii['rounded-sm'],
+					}}
+				>
+					<Typography.Subtitle fontSize={16} numberOfLines={1}>
+						{author.name}
+					</Typography.Subtitle>
+				</BlurView>
 			</Box>
 		</Box>
 	)
