@@ -21,7 +21,9 @@ export function Header(props: HeaderProps) {
 		>
 			<Box flexDirection="row" alignItems="center" gap={5}>
 				{canGoBack && <BackButton />}
-				<Typography.Title numberOfLines={1}>{title}</Typography.Title>
+				<Typography.Title numberOfLines={1} fontSize={28}>
+					{title}
+				</Typography.Title>
 			</Box>
 			{headerRight && headerRight()}
 		</DefaultContainer>
