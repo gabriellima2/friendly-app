@@ -11,10 +11,10 @@ type PostGeneralInformationProps = {
 export function PostGeneralInformation(props: PostGeneralInformationProps) {
 	const { author, timeAgo } = props
 	return (
-		<Box>
+		<Box flexDirection="row" gap={4}>
 			<Avatar url={author.avatarUrl} />
-			<Box>
-				<Typography.Title>{author.name}</Typography.Title>
+			<Box gap={1}>
+				<Typography.Title fontSize={20}>{author.name}</Typography.Title>
 				<Typography.Small>{timeAgo}</Typography.Small>
 			</Box>
 		</Box>
