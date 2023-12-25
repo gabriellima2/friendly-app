@@ -1,4 +1,6 @@
 export * from './post-general-information'
 export * from './post-preview-comments'
-export * from './post-interactions'
+export * from './comment-button'
+export * from './share-button'
+export * from './like-button'
 export * from './post-menu'

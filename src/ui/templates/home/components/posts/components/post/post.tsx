@@ -4,7 +4,9 @@ import { BlurView } from 'expo-blur'
 import {
 	PostGeneralInformation,
 	PostPreviewComments,
-	PostInteractions,
+	CommentButton,
+	ShareButton,
+	LikeButton,
 	PostMenu,
 } from './components'
 import { Box, QuickInformation, Typography } from '@/ui/atoms'
@@ -60,7 +62,11 @@ export function Post() {
 						borderBottomRightRadius: theme.borderRadii['rounded-lg'],
 					}}
 				>
-					<PostInteractions />
+					<Box flexDirection="row" alignItems="center" gap={4}>
+						<LikeButton />
+						<CommentButton />
+						<ShareButton />
+					</Box>
 					<Box flexDirection="row" alignItems="center" gap={3}>
 						<QuickInformation title="229" content="Likes" />
 						<Typography.Small>•</Typography.Small>
