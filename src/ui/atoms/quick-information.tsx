@@ -1,7 +1,6 @@
-import { Typography } from './typography'
-import { Box, type BoxProps } from './box'
+import { Typography, type TypographyProps } from './typography'
 
-type QuickInformationProps = BoxProps & {
+type QuickInformationProps = TypographyProps & {
 	title: string
 	content: string
 	numberOfLines?: number
@@ -10,13 +9,9 @@ type QuickInformationProps = BoxProps & {
 export function QuickInformation(props: QuickInformationProps) {
 	const { title, content, numberOfLines = 1, ...rest } = props
 	return (
-		<Box flexDirection="row" alignItems="center" gap={1} {...rest}>
-			<Typography.Title fontSize={14} color="light-gray">
-				{title}
-			</Typography.Title>
-			<Typography.Paragraph fontSize={14} numberOfLines={numberOfLines}>
-				{content}
-			</Typography.Paragraph>
-		</Box>
+		<Typography.Small numberOfLines={numberOfLines} {...rest}>
+			<Typography.Small fontWeight="bold">{title} </Typography.Small>
+			{content}
+		</Typography.Small>
 	)
 }

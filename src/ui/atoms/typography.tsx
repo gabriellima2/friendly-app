@@ -3,21 +3,21 @@ import type { Theme } from '@/styles/theme'
 
 const Text = createText<Theme>()
 
-type TextProps = Omit<Parameters<typeof Text>[0], 'variant'>
+export type TypographyProps = Omit<Parameters<typeof Text>[0], 'variant'>
 
-function Title(props: TextProps) {
+function Title(props: TypographyProps) {
 	return <Text variant="title" color="white" {...props} />
 }
 
-function Subtitle(props: TextProps) {
+function Subtitle(props: TypographyProps) {
 	return <Text variant="subtitle" color="white" {...props} />
 }
 
-function Paragraph(props: TextProps) {
+function Paragraph(props: TypographyProps) {
 	return <Text variant="paragraph" color="gray" {...props} />
 }
 
-function Small(props: TextProps) {
+function Small(props: TypographyProps) {
 	return <Text variant="small" color="gray" {...props} />
 }
 

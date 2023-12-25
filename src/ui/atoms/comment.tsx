@@ -13,7 +13,6 @@ export function Comment(props: CommentProps) {
 			title={authorName}
 			content={content}
 			numberOfLines={numberOfLines}
-			alignItems="flex-start"
 		/>
 	)
 }
