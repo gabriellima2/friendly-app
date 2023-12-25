@@ -1,10 +1,21 @@
-import { Post } from './components/post/post'
-import { Box } from '@/ui/atoms'
+import { FlatList } from 'react-native'
 
-export function Posts() {
+import { Post, type PostProps } from './components'
+import { theme } from '@/styles/theme'
+
+type PostsProps = {
+	posts: PostProps[]
+}
+
+export function Posts(props: PostsProps) {
+	const { posts } = props
 	return (
-		<Box>
-			<Post />
-		</Box>
+		<FlatList
+			data={posts}
+			keyExtractor={({ id }) => id}
+			renderItem={({ item }) => <Post {...item} />}
+			contentContainerStyle={{ gap: theme.spacing[6] }}
+			scrollEnabled={false}
+		/>
 	)
 }

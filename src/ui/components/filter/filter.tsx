@@ -9,7 +9,7 @@ const screen = Dimensions.get('screen')
 const defaultStyles = {
 	containerPadding: 8,
 	containerHeight: 56,
-	optionWidth: screen.width / 2,
+	optionWidth: screen.width / 2.185,
 }
 
 type FilterProps = {
@@ -35,6 +35,7 @@ export function Filter(props: FilterProps) {
 		>
 			<ScrollView
 				horizontal
+				scrollEnabled={options.length > 2}
 				showsHorizontalScrollIndicator={false}
 				style={{ height: '100%' }}
 				contentContainerStyle={{ alignItems: 'center' }}
