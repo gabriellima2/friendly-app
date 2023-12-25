@@ -6,7 +6,7 @@ import {
 	Posts,
 	StoriesSkeleton,
 } from './components'
-import { Header, Filter } from '@/ui/components'
+import { Header, Filter, QueryHandler } from '@/ui/components'
 import { Box, Typography } from '@/ui/atoms'
 
 import { useGetStories } from '@/hooks/use-get-stories'
@@ -22,13 +22,13 @@ export function Home() {
 				<Typography.Paragraph ml={4} color="white" fontSize={20}>
 					Stories
 				</Typography.Paragraph>
-				{stories.isLoading && <StoriesSkeleton />}
-				{!stories.isLoading && stories.error && (
-					<Typography.Small>{stories.error}</Typography.Small>
-				)}
-				{!stories.isLoading && !stories.error && stories.data && (
-					<Stories stories={stories.data} />
-				)}
+				<QueryHandler
+					data={stories.data}
+					error={stories.error}
+					isLoading={stories.isLoading}
+					renderFallback={() => <StoriesSkeleton />}
+					renderItem={(data) => <Stories stories={data!} />}
+				/>
 			</Box>
 			<Box mt={8} gap={6} paddingHorizontal={4}>
 				<Filter
@@ -38,13 +38,15 @@ export function Home() {
 					]}
 					onFilterChange={(v) => console.log(v)}
 				/>
-				{posts.isLoading && <Typography.Small>Carregando...</Typography.Small>}
-				{!posts.isLoading && posts.error && (
-					<Typography.Small>{posts.error}</Typography.Small>
-				)}
-				{!posts.isLoading && !posts.error && posts.data && (
-					<Posts posts={posts.data} />
-				)}
+				<QueryHandler
+					data={posts.data}
+					error={posts.error}
+					isLoading={posts.isLoading}
+					renderFallback={() => (
+						<Typography.Small>Carregando...</Typography.Small>
+					)}
+					renderItem={(data) => <Posts posts={data!} />}
+				/>
 			</Box>
 		</ScrollView>
 	)
