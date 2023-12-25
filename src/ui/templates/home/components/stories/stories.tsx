@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { FlatList } from 'react-native'
 
 import { Story, type StoryProps } from './components/story'
@@ -8,11 +9,16 @@ type StoriesProps = {
 
 export function Stories(props: StoriesProps) {
 	const { stories } = props
+
+	const renderItem = useCallback(({ item }: { item: StoryProps }) => {
+		return <Story {...item} />
+	}, [])
+
 	return (
 		<FlatList
 			data={stories}
 			keyExtractor={({ id }) => id}
-			renderItem={({ item }) => <Story {...item} />}
+			renderItem={renderItem}
 			showsHorizontalScrollIndicator={false}
 			decelerationRate="normal"
 			contentContainerStyle={{
@@ -20,6 +26,10 @@ export function Stories(props: StoriesProps) {
 				paddingHorizontal: 16,
 			}}
 			horizontal
+			removeClippedSubviews
+			maxToRenderPerBatch={6}
+			initialNumToRender={6}
+			windowSize={3}
 		/>
 	)
 }
