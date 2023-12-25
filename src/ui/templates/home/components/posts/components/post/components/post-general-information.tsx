@@ -5,17 +5,18 @@ type PostGeneralInformationProps = {
 		avatarUrl: string
 		name: string
 	}
-	timeAgo: string
+	createdAt: Date
 }
 
 export function PostGeneralInformation(props: PostGeneralInformationProps) {
-	const { author, timeAgo } = props
+	const { author, createdAt } = props
+
 	return (
 		<Box flexDirection="row" gap={4}>
 			<Avatar url={author.avatarUrl} />
 			<Box gap={1}>
 				<Typography.Title fontSize={20}>{author.name}</Typography.Title>
-				<Typography.Small>{timeAgo}</Typography.Small>
+				<Typography.Small>10 Mins Ago</Typography.Small>
 			</Box>
 		</Box>
 	)

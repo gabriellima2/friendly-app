@@ -1,7 +1,7 @@
 import { Box, Comment } from '@/ui/atoms'
 
 type PostPreviewCommentsProps = {
-	comments: { id: string; authorName: string; content: string }[]
+	comments: { id: string; author: { name: string }; content: string }[]
 	renderTotalComments: number
 }
 
@@ -9,11 +9,11 @@ export function PostPreviewComments(props: PostPreviewCommentsProps) {
 	const { comments, renderTotalComments } = props
 	const slicedComments = comments.slice(0, renderTotalComments)
 	return (
-		<Box>
+		<Box gap={2}>
 			{slicedComments.map((comment) => (
 				<Comment
 					key={comment.id}
-					authorName={comment.authorName}
+					authorName={comment.author.name}
 					content={comment.content}
 				/>
 			))}

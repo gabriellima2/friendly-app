@@ -14,12 +14,22 @@ import { Box, QuickInformation, Typography } from '@/ui/atoms'
 import { dimensions } from '@/constants/dimensions'
 import { theme } from '@/styles/theme'
 
+export type PostProps = {
+	id: string
+	imageUrl: string
+	author: { name: string; avatarUrl: string }
+	likes: number
+	comments: { id: string; author: { name: string }; content: string }[]
+	createdAt: Date
+}
+
 const CONTAINER_DIMENSIONS = {
 	PADDING: 16,
 	WIDTH: dimensions.screen.withSpacing.width - 16,
 }
 
-export function Post() {
+export function Post(props: PostProps) {
+	const { imageUrl, author, likes, comments, createdAt } = props
 	return (
 		<Box
 			backgroundColor="dark-gray-transparent"
@@ -33,20 +43,11 @@ export function Post() {
 				alignItems="center"
 				justifyContent="space-between"
 			>
-				<PostGeneralInformation
-					author={{
-						name: 'Ahmad Dorwart',
-						avatarUrl:
-							'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/945.jpg',
-					}}
-					timeAgo="10 Mins Ago"
-				/>
+				<PostGeneralInformation author={author} createdAt={createdAt} />
 				<PostMenu />
 			</Box>
 			<Image
-				source={{
-					uri: 'https://loremflickr.com/440/440?lock=1799342228766720',
-				}}
+				source={{ uri: imageUrl }}
 				width={CONTAINER_DIMENSIONS.WIDTH}
 				height={CONTAINER_DIMENSIONS.WIDTH}
 				style={{ flex: 1, borderRadius: theme.borderRadii['rounded-lg'] }}
@@ -74,27 +75,14 @@ export function Post() {
 						<ShareButton />
 					</Box>
 					<Box flexDirection="row" alignItems="center" gap={3}>
-						<QuickInformation title="229" content="Likes" />
+						<QuickInformation title={likes.toString()} content="Likes" />
 						<Typography.Small>•</Typography.Small>
-						<QuickInformation title="200" content="Comments" />
+						<QuickInformation
+							title={comments.length.toString()}
+							content="Comments"
+						/>
 					</Box>
-					<PostPreviewComments
-						renderTotalComments={2}
-						comments={[
-							{
-								id: '1',
-								authorName: 'Amat Paujl',
-								content:
-									'Lorem ipsum dolor sit amet, consectetur adipisicing elit',
-							},
-							{
-								id: '2',
-								authorName: 'Amat Paujl',
-								content:
-									'Lorem ipsum dolor sit amet, consectetur adipisicing elit',
-							},
-						]}
-					/>
+					<PostPreviewComments renderTotalComments={2} comments={comments} />
 				</BlurView>
 			</Box>
 		</Box>
