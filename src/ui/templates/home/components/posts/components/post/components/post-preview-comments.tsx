@@ -7,7 +7,11 @@ type PostPreviewCommentsProps = {
 
 export function PostPreviewComments(props: PostPreviewCommentsProps) {
 	const { comments, renderTotalComments } = props
-	const slicedComments = comments.slice(0, renderTotalComments)
+	const totalComments = comments.length
+	if (!totalComments) return
+	const renderTotal =
+		totalComments < renderTotalComments ? totalComments : renderTotalComments
+	const slicedComments = comments.slice(0, renderTotal)
 	return (
 		<Box gap={2}>
 			{slicedComments.map((comment) => (
