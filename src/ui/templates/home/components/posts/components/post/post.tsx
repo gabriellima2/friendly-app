@@ -1,4 +1,4 @@
-import { Dimensions, Image } from 'react-native'
+import { Image } from 'react-native'
 import { BlurView } from 'expo-blur'
 
 import {
@@ -11,11 +11,13 @@ import {
 } from './components'
 import { Box, QuickInformation, Typography } from '@/ui/atoms'
 
+import { dimensions } from '@/constants/dimensions'
 import { theme } from '@/styles/theme'
 
-const screen = Dimensions.get('screen')
-const SCREEN_PADDING_X = 32
-const CONTAINER_WIDTH = screen.width - (SCREEN_PADDING_X + 16)
+const CONTAINER_DIMENSIONS = {
+	PADDING: 16,
+	WIDTH: dimensions.screen.withSpacing.width - 16,
+}
 
 export function Post() {
 	return (
@@ -45,11 +47,15 @@ export function Post() {
 				source={{
 					uri: 'https://loremflickr.com/440/440?lock=1799342228766720',
 				}}
-				width={CONTAINER_WIDTH}
-				height={CONTAINER_WIDTH}
+				width={CONTAINER_DIMENSIONS.WIDTH}
+				height={CONTAINER_DIMENSIONS.WIDTH}
 				style={{ flex: 1, borderRadius: theme.borderRadii['rounded-lg'] }}
 			/>
-			<Box position="absolute" bottom={0} width={CONTAINER_WIDTH + 16}>
+			<Box
+				position="absolute"
+				bottom={0}
+				width={CONTAINER_DIMENSIONS.WIDTH + CONTAINER_DIMENSIONS.PADDING}
+			>
 				<BlurView
 					tint="dark"
 					intensity={90}
